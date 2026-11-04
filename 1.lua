@@ -1,8 +1,9 @@
 -- ========================================
--- >>> WELCOME TO VIP MOD PAK FILE <<<
+-- >>> WELCOME TO @ZakPubgSkin VIP MOD PAK FILE <<<
 -- =======================================
 -- =======================================
--- CONTACT: Telegram 
+-- CREDIT: @ZakPubgSkin - PAKISTAN VIP MOD
+-- CONTACT: Telegram @ZakPubgSkin
 -- VERSION: 4.5 PAK EDITION (FIXED LICENSE SYSTEM)
 -- ========================================
 
@@ -96,7 +97,7 @@ end
 local currentGamePaths = GetGamePaths(packageName)
 
 -- ============================================================================
--- VIP MOD ONLINE LICENSE SYSTEM (MIGRATED FROM Ahmad.lua)
+-- Zakpubgskin ONLINE LICENSE SYSTEM (MIGRATED FROM Ahmad.lua)
 -- All mod features remain hard-locked until the online key is verified.
 -- ============================================================================
 
@@ -236,7 +237,7 @@ local MasterLicenseCore = (function()
     local CreateLocalExpiry = (function()
         return function(cfg, wallReader)
             local E = {}
-            local expiredText = 'Mod expired. for renewal.'
+            local expiredText = 'Mod expired. DM @ZakPubgSkin for renewal.'
             local tamperText  = "Don't be over smart"
             local blockedMessage, blockedPhase
             local function finite(n)
@@ -911,7 +912,7 @@ local MasterLoginUI = (function()
                 add(buyBarTrim, 26, 140, 3, 24, 6)
 
                 local buyText = make("TextBlock", data.container)
-                buyText:SetText("VIP ACCESS REQUIRED |")
+                buyText:SetText("BUY KEY: Telegram @Zakarya_OP  |  WhatsApp: +923192530306")
                 setTextStyle(buyText, 11, color(1.0, 0.90, 0.40, 1.0))
                 visibility(buyText, passive)
                 add(buyText, 36, 144, W - 72, 18, 7)
@@ -1052,7 +1053,7 @@ local MasterWelcomeUI = (function()
         end
         local WelcomeUI = {Width = 600, Height = 276}
         local WelcomeText = {
-            "Welcome to Premium Pak",
+            "Welcome to @ZakPubgSkin Premium Pak",
             "No Kill Limit",
             "Play smart and avoid report",
         }
@@ -1639,7 +1640,7 @@ BRLicenseActive()
 
 -- Keep the notification helper used by the rest of the source.
 local function Notify(msg)
-    local s = "[VIP MOD] " .. tostring(msg)
+    local s = "[ZakPubgSkin] " .. tostring(msg)
     pcall(function()
         if _G.GTLMODNotify then
             _G.GTLMODNotify(s)
@@ -2266,7 +2267,7 @@ end
 
 local function NotifyMod(msg) 
     if not IsModAuthorized() then return end
-    local s = "[VIP MOD] " .. tostring(msg)
+    local s = "[ZakPubgSkin VIP] " .. tostring(msg)
     pcall(function() if _G.GTLMODNotify then _G.GTLMODNotify(s) end end)
     pcall(function() 
         local sh = import("ScriptHelperClient") 
@@ -2536,7 +2537,7 @@ local function GetConfigPaths(fileName)
     return paths
 end
 
-local ConfigFileName = "VIP_MOD_setting.txt"
+local ConfigFileName = "ZakPubgSkin_setting.txt"
 _G.LastConfigSaveStr = ""
 
 _G.SaveModSettings = function()
@@ -3614,7 +3615,7 @@ function _G.InitModMenuTab()
         -- ==================== DEFINE MENU PAGE (ORDER: ESP → AIMBOT → COMBAT → SKIN) ====================
         SettingPageDefine.ModMenu = {
             Key = "ModMenu",
-            Text= "♛ VIP MENU ♛",
+            Text= "♛ VIP MENU ♛ @ZakPubgSkin",
             UIKey = "Setting_Page_Privacy", 
             Category = {
                 { Key = "Cat_ESP_Visual", Text= "♛ ESP ♛", Stack = StackESPVisual },
@@ -3665,16 +3666,16 @@ local function ShowGTLMODVIPMenu()
         if not Msg or not Msg.Show then return end
 
         local function Step_ScamAlert()
-            Msg.Show(1, "♛VIP MOD PAK ♛", "➜ WELCOME TO VIP MOD PAK FILE\n\nNO FEEDBACK - NO SECURE UPDATE", function() local Web = require("client.slua.logic.url.logic_webview_sdk"); if Web and Web.OpenURL then Web:OpenURL("https://t.me/") end end, function() end, "JOIN", "CLOSE")
+            Msg.Show(1, "♛VIP MOD PAK @ZakPubgSkin♛", "➜ WELCOME TO @ZakPubgSkin VIP MOD PAK FILE\n\nNO FEEDBACK - NO SECURE UPDATE\n\n➜ CONTACT: @ZakPubgSkin", function() local Web = require("client.slua.logic.url.logic_webview_sdk"); if Web and Web.OpenURL then Web:OpenURL("https://t.me/ZakPubgSkin") end end, function() end, "JOIN", "CLOSE")
             _G.GTLMODState.MenuStep = 99
             _G.GTLMODMenuAlreadyShown = true
         end
 
         local function Step_Welcome()
-            Msg.Show(1, "♛WELCOME♛", "➜WELCOME TO VIP MOD PAK FILE\n\n♛ACTIVATION SUCCESSFUL!\n\nENJOY YOUR MOD AND SEND FEEDBACK",
+            Msg.Show(1, "♛WELCOME @ZakPubgSkin♛", "➜WELCOME TO @ZakPubgSkin VIP MOD PAK FILE\n\n♛ACTIVATION SUCCESSFUL!\n\nENJOY YOUR MOD AND SEND FEEDBACK TO OWNER.\nTHE REAL OWNER IS @ZakPubgSkin\n\nCONTACT: @ZakPubgSkin",
             function() 
                 _G.InitModMenuTab()
-                Notify("VIP MOD PAK - TOGGLE FEATURES!")
+                Notify("VIP MOD PAK BY @ZakPubgSkin - TOGGLE FEATURES!")
                 Step_ScamAlert()
             end, 
             function() end, "OK", "CLOSE")
@@ -6606,7 +6607,7 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
             pcall(function()
                 local MyHUD = Cached_MyHUD
                 if Valid(MyHUD) then
-                    local text = string.format("[ PLAY SAFE!!]", realCount, aiCount)
+                    local text = string.format("[ PLAY SAFE!! @ZakPubgSkin ]", realCount, aiCount)
                     MyHUD:AddDebugText(text, localPlayer, 0.06, {X=0, Y=0, Z=0}, {X=0, Y=0, Z=0}, C_RED, true, false, true, nil, 0.8, true)
                 end
             end)
@@ -6622,7 +6623,7 @@ local myToken = _G.GTLMODState.LoopToken
 local function FastTick() 
     if isExpired then 
         if not _G.GTLMODNotifiedExpire then
-            Notify("MOD HAS EXPIRED! PLEASE CONTACT OWNER TO RENEW!")
+            Notify("MOD HAS EXPIRED! PLEASE CONTACT OWNER TO RENEW!\nTelegram @ZakPubgSkin")
             _G.GTLMODNotifiedExpire = true
         end
         return 
