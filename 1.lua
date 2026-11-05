@@ -6437,27 +6437,28 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
                                 pName = enemy.PlayerName or enemy.PlayerNamePublic or "Enemy"
                             end
 
+                            -- Refresh visibility check every frame
                             local bIsVisible = false
                             if pc and type(pc.LineOfSightTo) == "function" then
                                 bIsVisible = pc:LineOfSightTo(enemy)
                             end
 
-                            -- Green color always (unless knocked = blue)
-                            local textColor
+                            local textColor = {R=255, G=255, B=255, A=255}
                             if isKnock then
-                                textColor = {R=0, G=180, B=255, A=255}   -- knock = cyan-blue
+                                textColor = {R=0, G=0, B=255, A=255}      -- Blue
                             else
-                                textColor = {R=0, G=255, B=100, A=255}   -- GREEN (bright)
+                                textColor = bIsVisible and C_GREEN or C_RED
                             end
 
-                            local label
+                            local prefix = bIsVisible and "▶" or "▶"
+                            local label = ""
                             if isKnock then
-                                label = (pName ~= "" and string.format("%s ♿", pName) or "♿")
+                                label = (pName ~= "" and string.format("%s [♿]", pName) or "♿")
                             else
                                 if pName ~= "" then
-                                    label = string.format("%s %.0f%%", pName, pctValue)
+                                    label = string.format("%s %s %.0f%%", pName, prefix, pctValue)
                                 else
-                                    label = string.format("%.0f%%", pctValue)
+                                    label = string.format("%s %.0f%%", prefix, pctValue)
                                 end
                             end
 
@@ -6465,6 +6466,7 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
                                              textColor, true, false, true, nil, 1.0, true)
                         end)
                     end
+
                     -- ESP RANGE (Distance)
                     if _G.GTLMODConfig.EspDistance then
                         pcall(function()
@@ -6473,7 +6475,7 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
                             if distM > 400 then return end
 
                             local distMeters = math.floor(distM + 0.5)
-                            local rangeColor = {R=255, G=255, B=255, A=255}
+                            local rangeColor = {R=255, G=255, B=255, A=255} -- white
 
                             hud:AddDebugText(string.format("%.0fm", distMeters), enemy, 0.3,
                                              {X=15, Y=15, Z=-15}, {X=15, Y=15, Z=-15},
@@ -6482,8 +6484,7 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
                     end
 
                     -- ESP NAME
-                                       -- ESP NAME -- DISABLED (now handled by ESPNAME_* premium renderer)
-                    if false then
+                    if _G.GTLMODConfig.EspName and not _G.GTLMODConfig.EspVipPro then
                         pcall(function()
                             local hud = Cached_MyHUD
                             if not (Valid(hud) and hud.AddDebugText) then return end
@@ -6602,8 +6603,8 @@ local showFrameUI = _G.GTLMODConfig.EspVipPro or _G.GTLMODConfig.EspVip
             end
         end
 
-        -- ESP TYPE 7 old text render — DISABLED
-        if false then
+        -- ESP TYPE 7: ENEMY COUNTER
+        if _G.GTLMODConfig.Esp7 then
             pcall(function()
                 local MyHUD = Cached_MyHUD
                 if Valid(MyHUD) then
